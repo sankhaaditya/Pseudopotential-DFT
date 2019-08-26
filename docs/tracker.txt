@@ -1,0 +1,59 @@
+qij divided by 4*pi*r^2
+
+Qij multiplied by atomic fraction
+
+What about Dij
+
+libxc installation was a pain because of windows. need gcc compiler 64 bit, cmake. had to modify the setup.py
+
+19-02-04
+Installed Libxc. Basic grid mapping done. Tomorrow's objective: 1. FD, gradients, XC potential, Hartree potential. 2. Get a real test tool and make real test cases.
+
+19-02-05
+XC Potential done. Pytest, hypothesis installed. Hartree potential tomorrow
+
+19-02-11
+Need to go till 10 a.u. to capture wave functions. Betas, qs up to 2 a.u.
+Normality checked for individual orbitals, using select betas. Orthogonality is still a confusion.
+Confirmed: betas, wfs have to be divided by (r[i]*np.sqrt(4*np.pi)); qs, rho have to be divided by (4*np.pi*r[i]**2)
+5.0/30 grid causing problems for betas
+
+Grid lengths: wf goes till 10.0 au, betas till 1.5-2.0, qs till 1.5-2.0
+
+sigma is square of the gradient.
+
+Hartree potential is fine. Can be improved. Using frequencies -n/2 to n/2. Expand to -n to n?
+
+19-02-19
+Need to treat the spin polarization in Cu with correct XC functional.
+
+19-02-27
+spherical harmonics: theta is angle that goes around at z=0, 0 to 2pi. phi goes from top to bottom, 0 to pi.
+r = np.sqrt((x-refx)**2+(y-refy)**2+(z-refz)**2)
+z = r*cos(phi) --> phi = arccos(z/r)
+y-yref/x-xref
+
+19-03-02
+overlap correctly formulated, checked. loop over l and m, double loop over energy levels.
+wf and betas are not as thought before. need to be divided by only r. then multiplied by lm spherical harmonics.
+confusion over vlocal, is it divided by r? appears not
+checking by plugging pseudo wave functions back into ks equation
+vxc and vh are generated in Hartree au, whereas pseudopotential data is in Rydberg au, 2 Ry = 1 Ha
+finally the energy value is somewhat of the same order, but not right. getting -2.5, needs to be -10.
+possible errors: sigma in vxc, periodic boundary condition in laplace. sure thing: vnlion
+
+19-03-03
+why are there only 18 electrons in cu pseudo? why does it occupy 3d84s2 and not 3d104s1?
+read somewhere vxc should be 5 times less than vh. about 10 times less right now.
+sigma is most probably the square of the gradient, as thought. otherwise, values are huge.
+lda_xc and gga_xc functionals all giving similar values. is there something wrong with the input, nv, nc?
+if 3d84s2, then there is polarization of 2.
+
+19-03-04
+sigma values confirmed to be square. for unpolarized, libxc takes arrays of length N. for polarized, rho is 2N, sigma is 3N.
+
+19-03-06
+occupancy is a confusion. some places it is a decimal e.g. Mg.
+how can rho_atom be provided radially? 
+trying with my calculated density instead of provided with 3d104s1. total density expression written.
+total energy expression written. hartree energy and xc energy need to be corrected. 

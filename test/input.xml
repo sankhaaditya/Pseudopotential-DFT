@@ -1,0 +1,6 @@
+<input>
+	<lattice dimensions="20.0 20.0 20.0" divisions="100 100 100"></lattice>
+	<atoms>
+		<atom species="cu" fraction="1" coordinates="10.0 10.0 10.0"></atom>
+	</atoms>
+</input>

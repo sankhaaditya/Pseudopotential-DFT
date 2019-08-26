@@ -1,0 +1,3 @@
+libxc installation:
+gcc compiler 64 bit
+cmake

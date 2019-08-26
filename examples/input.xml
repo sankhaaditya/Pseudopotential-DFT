@@ -1,0 +1,13 @@
+<input>
+	<lattice dimensions="4 4 4" divisions="4 4 4"></lattice>
+	<atoms>
+		<atom species="cu" fraction="0.125" coordinates="0.0 0.0 0.0"></atom>
+		<atom species="cu" fraction="0.125" coordinates="0.0 0.0 1.0"></atom>
+		<atom species="cu" fraction="0.125" coordinates="0.0 1.0 0.0"></atom>
+		<atom species="cu" fraction="0.125" coordinates="0.0 1.0 1.0"></atom>
+		<atom species="cu" fraction="0.125" coordinates="1.0 0.0 0.0"></atom>
+		<atom species="cu" fraction="0.125" coordinates="1.0 0.0 1.0"></atom>
+		<atom species="cu" fraction="0.125" coordinates="1.0 1.0 0.0"></atom>
+		<atom species="cu" fraction="0.125" coordinates="1.0 1.0 1.0"></atom>
+	</atoms>
+</input>
